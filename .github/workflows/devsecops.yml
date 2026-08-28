@@ -236,7 +236,7 @@ jobs:
             -J zap.json \
             -r zap.html \
             -w zap.md \
-            ; ZAP_EXIT=$?
+          ZAP_EXIT=$?
 
           echo "exit_code=$ZAP_EXIT" \
             >> "$GITHUB_OUTPUT"
