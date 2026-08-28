@@ -224,6 +224,8 @@ jobs:
         id: zap
         continue-on-error: true
         run: |
+          set +e
+
           docker run \
             --rm \
             --network tp22-ci \
@@ -235,11 +237,10 @@ jobs:
             -c /zap/wrk/zap-baseline.conf \
             -J zap.json \
             -r zap.html \
-            -w zap.md \
-          
+            -w zap.md
+            
           ZAP_EXIT=$?
-          echo "exit_code=$ZAP_EXIT" >> 
-          "$GITHUB_OUTPUT"
+          echo "exit_code=$ZAP_EXIT" >> "$GITHUB_OUTPUT"
 
       - name: Evaluate ZAP policy
         run: |
