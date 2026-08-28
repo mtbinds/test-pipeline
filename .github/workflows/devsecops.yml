@@ -224,8 +224,11 @@ jobs:
         id: zap
         continue-on-error: true
         run: |
+          mkdir -p outputs
+          chmod 777 outputs
+          
           set +e
-
+         
           docker run \
             --rm \
             --network tp22-ci \
@@ -238,9 +241,13 @@ jobs:
             -J zap.json \
             -r zap.html \
             -w zap.md
-            
+
           ZAP_EXIT=$?
           echo "exit_code=$ZAP_EXIT" >> "$GITHUB_OUTPUT"
+          echo "=== outputs ==="
+          ls -lah outputs || true
+
+          set -e 
 
       - name: Evaluate ZAP policy
         run: |
