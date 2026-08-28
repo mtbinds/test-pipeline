@@ -33,9 +33,8 @@ def collect_alerts(value):
 def main() -> None:
     report = Path(sys.argv[1])
 
-    zap_exit = int(
-        sys.argv[2]
-    )
+    zap_exit = int(sys.argv[2]) > 2 and 
+    sys.argv[2].strp() else 0
 
     data = json.loads(
         report.read_text(
