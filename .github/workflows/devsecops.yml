@@ -236,10 +236,10 @@ jobs:
             -J zap.json \
             -r zap.html \
             -w zap.md \
-            ZAP_EXIT=$?
-
-          echo "exit_code=$ZAP_EXIT" \
-            >> "$GITHUB_OUTPUT"
+          
+          ZAP_EXIT=$?
+          echo "exit_code=$ZAP_EXIT" >> 
+          "$GITHUB_OUTPUT"
 
       - name: Evaluate ZAP policy
         run: |
