@@ -243,11 +243,9 @@ jobs:
 
       - name: Evaluate ZAP policy
         run: |
-          ZAP_EXIT=$(cat outputs/zap_exit_code.txt)
-
           python scripts/evaluate_zap.py \
             outputs/zap.json \
-            "$ZAP_EXIT"
+            "${{ steps.zap.outputs.exit_code }}"
 
       - name: Upload DAST evidence
         if: always()
