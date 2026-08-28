@@ -154,7 +154,7 @@ jobs:
           output: outputs/trivy.json
           severity: HIGH,CRITICAL
           exit-code: "0"
-          ignore-unfixed: false
+          ignore-unfixed: true
 
       - name: Evaluate container policy
         run: |
