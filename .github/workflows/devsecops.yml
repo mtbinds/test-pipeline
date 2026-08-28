@@ -233,11 +233,9 @@ jobs:
             --rm \
             --network tp22-ci \
             -v "${PWD}/outputs:/zap/wrk:rw" \
-            -v "${PWD}/zap-baseline.conf:/zap/wrk/zap-baseline.conf:ro" \
             ghcr.io/zaproxy/zaproxy:stable \
             zap-baseline.py \
             -t http://tp22-ci-app:8080 \
-            -c /zap/wrk/zap-baseline.conf \
             -J zap.json \
             -r zap.html \
             -w zap.md
