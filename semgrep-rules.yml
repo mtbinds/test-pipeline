@@ -1,0 +1,26 @@
+rules:
+  - id: tp22-sql-string-concatenation
+    languages:
+      - python
+    severity: ERROR
+    message: "Avoid constructing SQL through string concatenation."
+    metadata:
+      cwe:
+        - "CWE-89"
+      owasp:
+        - "A03:2021 - Injection"
+      category: security
+    patterns:
+      - pattern: |
+          $QUERY = $A + $B
+
+  - id: tp22-synthetic-token
+    languages:
+      - python
+    severity: INFO
+    message: "Synthetic training token detected."
+    metadata:
+      cwe:
+        - "CWE-798"
+      category: training
+    pattern: TP22_DEMO_TOKEN = $VALUE

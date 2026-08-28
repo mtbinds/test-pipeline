@@ -1,0 +1,50 @@
+policy:
+  name: "TP22 Secure CI/CD Gate"
+
+  tests:
+    required: true
+    failure: block
+
+  sast:
+    block_on:
+      - ERROR
+
+    review:
+      - WARNING
+
+    ignore:
+      - INFO
+
+  container:
+    block_on:
+      severities:
+        - CRITICAL
+
+    high_requires_review: true
+
+  dast:
+    zap_fail: block
+    zap_warn: review
+
+  workflow_security:
+    minimum_permissions:
+      contents: read
+
+    forbidden_events:
+      - pull_request_target
+
+    require:
+      - separate_security_jobs
+      - artifact_retention
+      - final_gate
+      - no_plaintext_credentials
+
+  decision:
+    pass_values:
+      - PASS
+
+    review_values:
+      - REVIEW
+
+    block_values:
+      - BLOCK

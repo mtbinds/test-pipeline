@@ -1,0 +1,19 @@
+{
+  "lab": "LAB22 Secure CI/CD Pipeline",
+  "platform": "GitHub Actions",
+  "controls": [
+    "unit tests",
+    "Semgrep SAST",
+    "Docker build",
+    "Trivy image scan",
+    "ZAP Baseline DAST",
+    "final policy gate"
+  ],
+  "security": [
+    "least privilege GITHUB_TOKEN",
+    "separated jobs",
+    "artifact retention",
+    "ephemeral runtime",
+    "explicit final gate"
+  ]
+}
